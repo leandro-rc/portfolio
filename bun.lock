@@ -9,9 +9,10 @@
         "@prisma/client": "^7.5.0",
         "@tanstack/react-query": "^5.95.2",
         "@tanstack/react-query-devtools": "^5.95.2",
-        "@trpc/next": "^11.15.0",
-        "@trpc/react-query": "^11.15.0",
-        "@trpc/server": "^11.15.0",
+        "@trpc/client": "^11.15.1",
+        "@trpc/next": "^11.15.1",
+        "@trpc/react-query": "^11.15.1",
+        "@trpc/server": "^11.15.1",
         "@types/jest": "^30.0.0",
         "dotenv": "^17.3.1",
         "ky": "^1.14.3",
@@ -344,13 +345,13 @@
 
     "@tanstack/react-query-devtools": ["@tanstack/react-query-devtools@5.95.2", "", { "dependencies": { "@tanstack/query-devtools": "5.95.2" }, "peerDependencies": { "@tanstack/react-query": "^5.95.2", "react": "^18 || ^19" } }, "sha512-AFQFmbznVkbtfpx8VJ2DylW17wWagQel/qLstVLkYmNRo2CmJt3SNej5hvl6EnEeljJIdC3BTB+W7HZtpsH+3g=="],
 
-    "@trpc/client": ["@trpc/client@11.15.0", "", { "peerDependencies": { "@trpc/server": "11.15.0", "typescript": ">=5.7.2" }, "bin": { "intent": "bin/intent.js" } }, "sha512-8mdFwCU3sK4W6Wg5LIBl5SonYqE4I6UlwR80qL3e7SSxYWHH+ZeQGlBjbLNL3+VsOxXaAAfUJYRCMsEZgQSFPw=="],
+    "@trpc/client": ["@trpc/client@11.15.1", "", { "peerDependencies": { "@trpc/server": "11.15.1", "typescript": ">=5.7.2" }, "bin": { "intent": "bin/intent.js" } }, "sha512-Zav9uPSEM7zBlEbttKep1kCfxHumB7P/e/zVFspzfyeB6XYGVeILFeZVL6cnODkgUIFSzgO9X4fXRnn0BP/BhQ=="],
 
-    "@trpc/next": ["@trpc/next@11.15.0", "", { "peerDependencies": { "@tanstack/react-query": "^5.59.15", "@trpc/client": "11.15.0", "@trpc/react-query": "11.15.0", "@trpc/server": "11.15.0", "next": "*", "react": ">=16.8.0", "react-dom": ">=16.8.0", "typescript": ">=5.7.2" }, "optionalPeers": ["@tanstack/react-query", "@trpc/react-query"], "bin": { "intent": "bin/intent.js" } }, "sha512-7eydVsBioUrGT7NLvRfFaDfZUSudClcOP6V+s2Ek6aecRGza8RiTu2YDAw1jc4c+1+2c/oe9+5KAZQL/p7o1Gg=="],
+    "@trpc/next": ["@trpc/next@11.15.1", "", { "peerDependencies": { "@tanstack/react-query": "^5.59.15", "@trpc/client": "11.15.1", "@trpc/react-query": "11.15.1", "@trpc/server": "11.15.1", "next": "*", "react": ">=16.8.0", "react-dom": ">=16.8.0", "typescript": ">=5.7.2" }, "optionalPeers": ["@tanstack/react-query", "@trpc/react-query"], "bin": { "intent": "bin/intent.js" } }, "sha512-shyvVafBxyOa0NgDinydkbfIom4Y5QglYa+re1gJc329+CJEbqePMUG1GomOWt6D0MOgE+tiXnTtgwURukcbBg=="],
 
-    "@trpc/react-query": ["@trpc/react-query@11.15.0", "", { "peerDependencies": { "@tanstack/react-query": "^5.80.3", "@trpc/client": "11.15.0", "@trpc/server": "11.15.0", "react": ">=18.2.0", "typescript": ">=5.7.2" } }, "sha512-7Qa/qKydfNPRnRB8tObu1QF8WnBdZh61pHpuCqXz9rocXzw+f40MYBQlMGDI30oPXZU5JYmpNkiuWYhMTOw1Dw=="],
+    "@trpc/react-query": ["@trpc/react-query@11.15.1", "", { "peerDependencies": { "@tanstack/react-query": "^5.80.3", "@trpc/client": "11.15.1", "@trpc/server": "11.15.1", "react": ">=18.2.0", "typescript": ">=5.7.2" } }, "sha512-9xOshELkQ9KMC9nxZKWjcjXfn5UNz3a2IXxG/hDHjOfLkb78L5vp2UJJyc90WHi8br0dwYBZmoVEW9M5bj6cvg=="],
 
-    "@trpc/server": ["@trpc/server@11.15.0", "", { "peerDependencies": { "typescript": ">=5.7.2" }, "bin": { "intent": "bin/intent.js" } }, "sha512-qLcodARy05fzMSrNG6VYtynsAmUCRaQ7SDm3Ynvryhylp2Zq4KN28qJeMlMqLeJKwZ05KukkcIsVTKzscWX1pQ=="],
+    "@trpc/server": ["@trpc/server@11.15.1", "", { "peerDependencies": { "typescript": ">=5.7.2" }, "bin": { "intent": "bin/intent.js" } }, "sha512-0A1fIBU0zDLXaSOhuHOChqM4mCCCi233FcPdPNXJ+FIVMd5VEGe33u6cehUavZMquIi6uIec9xymac2P4LgqMA=="],
 
     "@tybys/wasm-util": ["@tybys/wasm-util@0.10.1", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg=="],
 

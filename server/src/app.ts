@@ -3,7 +3,9 @@ import Fastify from 'fastify';
 import prismaPlugin from './plugins/prisma.js';
 import corsPlugin from './plugins/cors.js';
 import sensiblePlugin from './plugins/sensible.js';
+
 import photosRoutes from './routes/photos/photos.routes.js';
+import trpcPlugin from './plugins/trpc.js';
 
 export function buildApp() {
     const fastify = Fastify({ logger: true });
@@ -13,6 +15,8 @@ export function buildApp() {
     fastify.register(sensiblePlugin);
 
     fastify.register(photosRoutes);
+
+    fastify.register(trpcPlugin);
 
     fastify.get('/health', async () => ({ status: 'ok' }));
 

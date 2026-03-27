@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./shared/dist",
+        "rootDir": "./shared",
+        "declaration": false,
+        "emitDeclarationOnly": false,
+        "noEmit": false,
+        "module": "ESNext",
+        "target": "ES2020"
+    },
+    "include": ["shared/**/*.ts"]
+}
