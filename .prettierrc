@@ -1,0 +1,28 @@
+{
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": ["*.mdx"],
+      "options": {
+        "parser": "mdx",
+        "semi": false
+      }
+    },
+    {
+      "files": ["*.tsx", "*.ts"],
+      "options": {
+        "parser": "typescript"
+      }
+    },
+    {
+      "files": ["**/*.styles.ts"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
+  "printWidth": 100,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 4
+}
