@@ -1,6 +1,6 @@
 import { type FastifyInstance } from 'fastify';
 import { PhotosResponse } from './photos.schema.js';
-import { listPhotos } from './photos.service.js';
+import { listPhotos, savePhoto } from './photos.service.js';
 
 export default async function photosRoutes(fastify: FastifyInstance) {
     fastify.get(
@@ -33,4 +33,17 @@ export default async function photosRoutes(fastify: FastifyInstance) {
             }
         },
     );
+
+    fastify.post('/api/photos', async (request, reply) => {
+        try {
+            const { url, title } = request.body;
+            const photo = await savePhoto({ url, title });
+            return { message: 'Photo saved successfully', photo };
+        } catch (error) {
+            request.log.error(error);
+            return reply.internalServerError(
+                error instanceof Error ? error.message : String(error),
+            );
+        }
+    });
 }

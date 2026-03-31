@@ -1,3 +1,5 @@
+'use client';
+
 import { trpc } from '@/api/trpc';
 
 export const Photos = () => {
@@ -23,3 +25,4 @@ export const Photos = () => {
         </div>
     );
 };
+export default Photos;

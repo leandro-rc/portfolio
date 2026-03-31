@@ -1,7 +1,7 @@
 import { prismaClient } from '@server/plugins/prisma';
 import { trpcInstance } from '../trpcInstance';
 import z from 'zod';
-import { getPhotosRoute } from '../routes/photos.route';
+import { getPhotosRoute, savePhotoRoute } from '../routes/photos.route';
 
 const getPhotosProcedure = trpcInstance.procedure
     .input(
@@ -29,7 +29,8 @@ const getPhotosProcedure = trpcInstance.procedure
         return response;
     });
 
-const addPhotoProcedure = trpcInstance.protectedProcedure
+// TODO: Once auth is in place, change this to protected procedure and get user ID from session context instead of passing it in the input
+const savePhotoProcedure = trpcInstance.procedure
     .input(
         z.object({
             url: z.string(),
@@ -37,16 +38,15 @@ const addPhotoProcedure = trpcInstance.protectedProcedure
         }),
     )
     .mutation(({ ctx, input }) => {
-        if (!ctx?.session?.user?.id) {
-            throw new Error('User ID is required to add a photo.');
-        }
-        return prismaClient.photo.create({
-            data: {
-                url: input.url,
-                title: input.title,
-                userId: ctx.session.user.id,
-            },
+        // if (!ctx?.session?.user?.id) {
+        //     throw new Error('User ID is required to add a photo.');
+        // }
+
+        return savePhotoRoute({
+            url: input.url,
+            title: input.title,
+            userId: 'dummy', //ctx.session.user.id,
         });
     });
 
-export { getPhotosProcedure, addPhotoProcedure };
+export { getPhotosProcedure, savePhotoProcedure };

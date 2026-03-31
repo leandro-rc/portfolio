@@ -1,16 +1,14 @@
 'use client';
 
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { Photos } from './components/photos/Photos';
-import { TrpcProvider } from '@/api/TrpcProvider';
+import Link from 'next/link';
 
 function App() {
     return (
-        <TrpcProvider>
-            <ReactQueryDevtools initialIsOpen={false} />
+        <>
             <h1>Localhost dev</h1>
-            <Photos />
-        </TrpcProvider>
+            <Link href="/photos">Photos</Link>
+            <Link href="/upload">Upload photo</Link>
+        </>
     );
 }
 
