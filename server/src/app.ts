@@ -4,7 +4,7 @@ import prismaPlugin from './plugins/prisma.js';
 import corsPlugin from './plugins/cors.js';
 import sensiblePlugin from './plugins/sensible.js';
 
-import photosRoutes from './routes/photos/photos.routes.js';
+import photosRoutes from './routes/photo/photo.routes.js';
 import trpcPlugin from './plugins/trpc.js';
 
 export function buildApp() {

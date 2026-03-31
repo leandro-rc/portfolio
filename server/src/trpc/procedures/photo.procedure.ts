@@ -1,7 +1,7 @@
 import { prismaClient } from '@server/plugins/prisma';
 import { trpcInstance } from '../trpcInstance';
 import z from 'zod';
-import { getPhotosRoute, savePhotoRoute } from '../routes/photos.route';
+import { getPhotosRoute, savePhotoRoute } from '../routes/photo.route';
 
 const getPhotosProcedure = trpcInstance.procedure
     .input(
