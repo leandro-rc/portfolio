@@ -1,10 +1,9 @@
-import { t } from './t';
-import { prismaClient } from '@server/plugins/prisma';
+import { addPhotoProcedure, getPhotosProcedure } from './procedures/photo.procedure';
+import { trpcInstance } from './trpcInstance';
 
-export const appRouter = t.router({
-    photos: t.procedure.query(async () => {
-        return prismaClient.photo.findMany({ orderBy: { createdAt: 'desc' } });
-    }),
+export const appRouter = trpcInstance.router({
+    getPhotos: getPhotosProcedure,
+    addPhoto: addPhotoProcedure,
 });
 
 export type AppRouter = typeof appRouter;
