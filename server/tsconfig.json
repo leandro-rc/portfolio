@@ -43,7 +43,7 @@
         "moduleDetection": "force",
         "skipLibCheck": true,
         "esModuleInterop": true,
-        "ignoreDeprecations": "6.0"
+        "ignoreDeprecations": "6.0",
         "paths": {
             "@shared/*": ["shared/*"],
             "@server/*": ["server/src/*"]

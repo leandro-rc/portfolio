@@ -1,8 +1,8 @@
-import "@fastify/type-provider-typebox";
-import { PrismaClient } from "@prisma/client";
+import '@fastify/type-provider-typebox';
+import { PrismaClient } from '../../generated/prisma/client.js';
 
-declare module "fastify" {
-  interface FastifyInstance {
-    prisma: PrismaClient;
-  }
+declare module 'fastify' {
+    interface FastifyInstance {
+        prisma: PrismaClient;
+    }
 }
