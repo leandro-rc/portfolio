@@ -1,6 +1,6 @@
 'use client';
+
 import { signIn, signOut, useSession } from 'next-auth/react';
-import Link from 'next/link';
 
 export function AuthStatus() {
     const { data: session, status } = useSession();
@@ -41,3 +41,5 @@ export function AuthStatus() {
         </div>
     );
 }
+
+export default AuthStatus;

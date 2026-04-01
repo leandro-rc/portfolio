@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { AuthStatus } from './components/AuthStatus';
+import { AuthStatus } from './components/authStatus/AuthStatus';
 
 function App() {
     return (
