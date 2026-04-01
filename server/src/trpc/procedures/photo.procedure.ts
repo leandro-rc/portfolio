@@ -1,16 +1,20 @@
-import { prismaClient } from '@server/plugins/prisma';
 import { trpcInstance } from '../trpcInstance';
-import z from 'zod';
-import { getPhotosRoute, savePhotoRoute } from '../routes/photo.route';
+import { getPhotosHandler, savePhotoHandler } from '../handlers/photo.handler';
+import { photosListInputSchema, savePhotoInputSchema } from '../schemas/input.schema';
 
-const getPhotosProcedure = trpcInstance.procedure
-    .input(
-        z.object({
-            pageToken: z.string().optional(),
-            pageSize: z.number().optional(),
-        }),
-    )
-    .query(async (opts) => {
+/**
+ * Returns the photo feed for an authenticated user.
+ *
+ * Pagination inputs are already part of the procedure contract, but the current
+ * implementation still returns the full route result until pagination is added.
+ *
+ * @param input.pageToken Optional cursor token for a future paginated query.
+ * @param input.pageSize Optional page size for a future paginated query.
+ * @returns The available photos, or an empty array when no records are found.
+ */
+const getPhotosProcedure = trpcInstance.protectedProcedure
+    .input(photosListInputSchema)
+    .query(async () => {
         // TODO: Implement pagination logic using pageToken and pageSize
         // if (!opts.input.id) {
         //     throw new TRPCError({
@@ -19,8 +23,7 @@ const getPhotosProcedure = trpcInstance.procedure
         //     });
         // }
 
-        const response = await getPhotosRoute();
-        console.log('Response from getPhotosRoute:', response);
+        const response = await getPhotosHandler();
 
         if (!response) {
             return [];
@@ -29,23 +32,23 @@ const getPhotosProcedure = trpcInstance.procedure
         return response;
     });
 
-// TODO: Once auth is in place, change this to protected procedure and get user ID from session context instead of passing it in the input
-const savePhotoProcedure = trpcInstance.procedure
-    .input(
-        z.object({
-            url: z.string(),
-            title: z.string(),
-        }),
-    )
+/**
+ * Creates a new photo record for the authenticated user.
+ *
+ * The caller provides the uploaded asset URL and display title, while the user
+ * id is resolved from the protected tRPC context.
+ *
+ * @param input.url The stored asset URL.
+ * @param input.title The human-readable title for the photo.
+ * @returns The newly created photo record.
+ */
+const savePhotoProcedure = trpcInstance.protectedProcedure
+    .input(savePhotoInputSchema)
     .mutation(({ ctx, input }) => {
-        // if (!ctx?.session?.user?.id) {
-        //     throw new Error('User ID is required to add a photo.');
-        // }
-
-        return savePhotoRoute({
+        return savePhotoHandler({
             url: input.url,
             title: input.title,
-            userId: 'dummy', //ctx.session.user.id,
+            userId: ctx.user.id,
         });
     });
 

@@ -61,7 +61,7 @@ const UploadForm = () => {
         // console.log('Key', key);
 
         //2. Upload directly to S3 using the signed URL
-        // await upload(url, file);
+        await upload(url, file);
 
         // 3. Save photo metadata to DB (via tRPC + Tanstack Query mutation call)
         const fileUrl = `${process.env.NEXT_PUBLIC_R2_PUBLIC_URL}/${key}`;

@@ -1,13 +1,22 @@
-// import { trpcInstance } from '../trpcInstance';
 import { prismaClient } from '@server/plugins/prisma';
 
-export const getPhotosRoute = async () => {
+/**
+ * Returns all photo records ordered from newest to oldest.
+ */
+export const getPhotosHandler = async () => {
     const photos = await prismaClient.photo.findMany({ orderBy: { createdAt: 'desc' } });
 
     return photos ?? [];
 };
 
-export const savePhotoRoute = async ({
+/**
+ * Persists a photo record for the provided user.
+ *
+ * @param params.url The stored asset URL.
+ * @param params.title The human-readable title shown in the UI.
+ * @param params.userId The owner id for the new photo.
+ */
+export const savePhotoHandler = async ({
     url,
     title,
     userId,

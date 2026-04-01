@@ -1,30 +1,24 @@
-import { z } from 'zod';
-import { s3 } from '../helper';
-import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { trpcInstance } from '../trpcInstance';
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { uploadSignedUrlInputSchema } from '../schemas/input.schema';
+import { getCustomSignedUrlHandler } from '../handlers/upload.handler';
 
+/**
+ * Creates a short-lived signed upload URL for direct object storage uploads.
+ *
+ * The generated key is namespaced under `uploads/` and can be used by the
+ * frontend to upload the file without proxying the binary through the app
+ * server.
+ *
+ * @param input.fileName The original file name used to derive the storage key.
+ * @param input.fileType The MIME type applied to the uploaded object.
+ * @returns A signed URL and the generated object key.
+ */
 const getCustomSignedUrl = trpcInstance.procedure
-    .input(
-        z.object({
-            fileName: z.string(),
-            fileType: z.string(),
-        }),
-    )
+    .input(uploadSignedUrlInputSchema)
     .mutation(async ({ input }) => {
-        const key = `uploads/${Date.now()}-${input.fileName}`;
-
-        const command = new PutObjectCommand({
-            Bucket: process.env.S3_BUCKET_NAME!,
-            Key: key,
-            ContentType: input.fileType,
+        return getCustomSignedUrlHandler({
+            fileName: input.fileName,
+            fileType: input.fileType,
         });
-
-        const url = await getSignedUrl(s3, command, { expiresIn: 60 });
-
-        return {
-            url,
-            key,
-        };
     });
 export default getCustomSignedUrl;
