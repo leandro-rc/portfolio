@@ -1,55 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Full Stack Portfolio Project
 
-## Getting Started
+This is a modern, full-stack portfolio application built to showcase my skills as a TypeScript developer across both frontend and backend. It demonstrates scalable architecture, type safety, authentication, file uploads, and best practices for real-world web apps.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Architecture Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Frontend:** Next.js 16 (App Router, TypeScript, Tailwind CSS)
+    - Modular file-based routing, React Server/Client Components
+    - tRPC + React Query for type-safe data fetching
+    - NextAuth.js for GitHub OAuth authentication
+    - S3 file uploads with signed URLs
+- **Backend:** Fastify (TypeScript) + Prisma ORM
+    - Modular route structure (user, photo, upload)
+    - tRPC for end-to-end type-safe API
+    - PostgreSQL (via Prisma)
+    - Environment-based config, plugin-based extensibility
 
-## Authentication (GitHub)
+See [`docs/server-architecture.md`](docs/server-architecture.md) and [`docs/frontend-architecture.md`](docs/frontend-architecture.md) for full details.
 
-This project uses NextAuth with GitHub OAuth.
+---
 
-Set these environment variables in `.env.local`:
+## Tech Stack
 
-```bash
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=replace-with-a-long-random-string
-GITHUB_CLIENT_ID=your-github-oauth-client-id
-GITHUB_CLIENT_SECRET=your-github-oauth-client-secret
-```
+- **Frontend:** Next.js 16, React 19, TypeScript, Tailwind CSS, tRPC, React Query, NextAuth.js
+- **Backend:** Fastify, TypeScript, Prisma ORM, tRPC, PostgreSQL
+- **Dev Tools:** Bun, ESLint, Prettier, React Query Devtools
 
-In your GitHub OAuth app configuration, use this callback URL:
+---
 
-```text
-http://localhost:3000/api/auth/callback/github
-```
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- End-to-end type safety (tRPC + Prisma)
+- GitHub OAuth authentication (NextAuth.js)
+- Modular, scalable codebase (monorepo)
+- File uploads to S3 (with signed URLs)
+- User and photo management (CRUD)
+- Modern UI with Tailwind CSS
+- React Query for caching and mutations
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/` — Next.js frontend (App Router, pages, components, API)
+- `server/` — Fastify backend (routes, plugins, Prisma, tRPC)
+- `shared/` — Shared types and utilities
+- `docs/` — Architecture documentation
